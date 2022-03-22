@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', pizzaView.home, name='home'),
     path('order', pizzaView.order, name='order'),
+    path('get-more', pizzaView.pizzas, name='pizzas'),
+    path('pizza/edit/<int:pk>', pizzaView.edit_order, name='edit_order'),
+
 ]
+

@@ -1,9 +1,39 @@
+{% extends "index.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
 <h1>Orders Page</h1>
 
-<h3>{{ message }}</h3>
+        <h3>{{ message }}</h3>
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit", value="OrderNow">
-</form>
+        {% if pizza_id %}
+        <a href="{% url  'edit_order' pizza_id %}">Edit Pizza</a>
+        {% endif%}
+
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="form-group">
+            {{field.errors }}
+            {{field.label_tag }}
+            {% render_field field class="form-control" %}
+            </div>
+            {% endfor%}
+            <!-- {{form}} -->
+            <input type="submit", value="Order Now" class="btn btn-sm btn-success">
+        </form>
+
+        <br><hr>
+
+        <h4>request More Pizza</h4>
+        <form action="{% url 'pizzas' %}" method="get">
+            {% csrf_token %}
+            {{multiple_pizza}}
+            <input type="submit", value="Order More Pizza" class="btn btn-sm btn-success">
+        </form>
+
+    </div>
+
+{% endblock content %}

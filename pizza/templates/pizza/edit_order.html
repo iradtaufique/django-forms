@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% load widget_tweaks %}
+{% block content  %}
+
+<h1>Edit Orders Here</h1>
+
+<h3>{{ note }}</h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {% render_field field class="form-control" %}
+        </div>
+    {% endfor %}
+    <input type="submit", value="Edit Order" class="btn btn-sm btn-success">
+</form>
+{% endblock%}
+

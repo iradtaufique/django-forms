@@ -1,2 +1,28 @@
-<h1>My Gardern Shop</h1>
-<a href="{% url 'order' %}">Place Order</a>
+{% extends "index.html" %} 
+
+
+{% block content %}
+<table class="table mt-5 table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Topping 1</th>
+        <th scope="col">Topping 2</th>
+        <th scope="col">Size</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pizza in data %}
+        <tr>
+            <td>{{pizza.topping1}}</td>
+            <td>{{pizza.topping2}}</td>
+            <td>{{pizza.size}}</td>
+        </tr>
+
+      {% endfor %}
+      
+    </tbody>
+</table>
+
+
+
+{% endblock%}
